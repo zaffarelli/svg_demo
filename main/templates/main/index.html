@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{%  load static %}
+
+
+{% block main %}
+
+            <img src="{% static 'main/svg/thebluesharvest_logo.svg' %}" width="40%"/>
+            <div class="front_message">
+                SVG Demo
+            </div>
+            <img src="{% static 'main/svg/regis.svg' %}" width="10%"/>
+            <img src="{% static 'main/svg/cecile.svg' %}" width="10%"/>
+            <img src="{% static 'main/svg/david.svg' %}" width="10%"/>
+            <img src="{% static 'main/svg/alex.svg' %}" width="10%"/>
+{% endblock main %}
+
+
+{% block custom_js %}
+<script>
+    _.defer(function () {
+        let co = new Main()
+        co.perform();
+        co.revealUI();
+    });
+</script>
+{% endblock custom_js %}

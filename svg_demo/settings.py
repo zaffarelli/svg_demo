@@ -31,12 +31,16 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'main.apps.MainConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'compressor',
+    'sass_processor',
+    'fontawesomefree'
 ]
 
 MIDDLEWARE = [
@@ -121,3 +125,18 @@ STATIC_ROOT = 'svg_demo_static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+VERSION = "0.0.1"
+
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'sass_processor.finders.CssFinder',
+]
+
+
+
+if DEBUG:
+    import mimetypes
+    mimetypes.add_type("application/javascript;charset=utf-8", ".es6", True)
+    mimetypes.add_type("application/javascript;charset=utf-8", ".js", True)
